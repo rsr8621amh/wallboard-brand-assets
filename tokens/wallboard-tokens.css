@@ -1,0 +1,232 @@
+/* ============================================================
+   Wallboard Design System — Reconciled Design Tokens
+   v2.0 · 2026.05
+   ------------------------------------------------------------
+   Canonical source of truth for all Wallboard HTML/web artifacts.
+   Official brand values from wallboard-brand SKILL.md take
+   precedence over Claude Design output where conflicts existed.
+   Import once at :root. All component CSS references these vars.
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Libre+Franklin:wght@400;500;600;700&display=swap");
+
+:root {
+
+  /* ----------------------------------------------------------
+     COLOR · Brand (Official Wallboard palette)
+     Source: wallboard-brand SKILL.md — CMYK/RGB verified.
+     ---------------------------------------------------------- */
+
+  /* Primary brand red — CANONICAL. Never substitute. */
+  --torch-red:        #D1202C;   /* Primary brand. Buttons, accents, CTAs, logos. */
+  --torch-red-hover:  #B81C26;   /* Hover / active state (10% darker). */
+  --torch-red-deep:   #6E0F14;   /* Inverted surfaces, weighty moments. */
+  --torch-red-subtle: rgba(209, 32, 44, 0.08); /* Tint for wb-column table cells. */
+
+  /* Neutrals */
+  --charcoal:         #151B1B;   /* Primary dark. Text, dark backgrounds. */
+  --ash:              #EAEAEA;   /* Primary light. Light backgrounds, text on dark. */
+  --white:            #FFFFFF;
+
+  /* Secondary palette */
+  --marigold:         #DAB84C;   /* Secondary accent. Highlights, callouts, warmth. */
+  --slate:            #738084;   /* Neutral. Secondary text, subtle backgrounds. */
+
+  /* Warm surface palette (from Claude Design — approved for web artifacts) */
+  --paper:            #F3EDE5;   /* Warm page background. Use instead of --ash for web UI. */
+  --paper-2:          #E8DECF;   /* Component headers, panels, elevated surfaces. */
+  --paper-3:          #DCCFBA;   /* Borders on warm surfaces. */
+
+  /* Ink — warm near-black text system */
+  --ink:              #14110E;   /* Primary text. Never pure #000. */
+  --ink-soft:         #5A4E42;   /* Secondary body, captions. */
+  --ink-mute:         #8A7C6E;   /* Tertiary labels, separators, footnotes. */
+
+  /* Hairlines */
+  --hair:             rgba(20, 17, 14, 0.14);  /* Default divider. */
+  --hair-strong:      rgba(20, 17, 14, 0.28);  /* Load-bearing divisions. */
+
+  /* On-red foreground (inverted system) */
+  --on-red-hi:        #F3EDE5;                   /* Primary text on --torch-red-deep. */
+  --on-red-lo:        rgba(243, 237, 229, 0.62); /* Secondary text on red. */
+  --on-red-hair:      rgba(243, 237, 229, 0.20); /* Hairlines on red. */
+
+  /* ----------------------------------------------------------
+     COLOR · Semantic aliases
+     Always use these in components — enables clean re-theming.
+     ---------------------------------------------------------- */
+  --color-bg:              var(--paper);
+  --color-bg-elevated:     var(--paper-2);
+  --color-bg-dark:         var(--charcoal);
+  --color-bg-inverted:     var(--torch-red-deep);
+  --color-text:            var(--ink);
+  --color-text-muted:      var(--ink-soft);
+  --color-text-subtle:     var(--ink-mute);
+  --color-text-on-dark:    var(--ash);
+  --color-text-inverted:   var(--on-red-hi);
+  --color-accent:          var(--torch-red);
+  --color-accent-hover:    var(--torch-red-hover);
+  --color-accent-secondary: var(--marigold);
+  --color-border:          var(--hair);
+  --color-border-strong:   var(--hair-strong);
+  --color-focus-ring:      var(--torch-red);
+
+  /* ----------------------------------------------------------
+     TYPOGRAPHY · Families
+     Official Wallboard fonts. Do not substitute.
+     Web fallbacks included for environments without font install.
+     ---------------------------------------------------------- */
+  --font-display: 'Satoshi', 'Arial Black', system-ui, sans-serif;  /* Hero headlines, major headings. */
+  --font-sans:    'Libre Franklin', 'Arial', system-ui, sans-serif;  /* Section titles, UI labels, ALL CAPS. */
+  --font-body:    'Roboto', 'Helvetica', 'Arial', sans-serif;        /* Body, paragraphs, table cells. */
+  --font-mono:    'Geist Mono', ui-monospace, monospace;             /* Eyebrows, labels, metadata, code. */
+
+  /* ----------------------------------------------------------
+     TYPOGRAPHY · Web UI scale
+     Calibrated for web apps and dense interfaces.
+     For slide/print work, double these values.
+     ---------------------------------------------------------- */
+  --type-display:   64px;   /* Hero callouts. Display 900. */
+  --type-title:     48px;   /* Page titles. Display 700. */
+  --type-subtitle:  28px;   /* Section subtitles, hero support. */
+  --type-h2:        23px;   /* Section headers. Sans Medium, ALL CAPS. */
+  --type-h3:        18px;   /* Card headings. */
+  --type-body:      15px;   /* Primary body. Roboto 400. */
+  --type-body-sm:   13px;   /* Supporting details, captions. */
+  --type-eyebrow:   13px;   /* Mono uppercase eyebrows. */
+  --type-caption:   11px;   /* Fine print, disclaimers. Roboto Bold, ALL CAPS. */
+
+  /* ----------------------------------------------------------
+     TYPOGRAPHY · Weights
+     ---------------------------------------------------------- */
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+  --weight-black:     900;
+
+  /* ----------------------------------------------------------
+     TYPOGRAPHY · Line-heights
+     ---------------------------------------------------------- */
+  --leading-display:  0.94;   /* Hero display at scale. */
+  --leading-tight:    1.10;   /* Headlines. */
+  --leading-snug:     1.25;   /* Card headings. */
+  --leading-body:     1.50;   /* Body copy. */
+  --leading-loose:    1.65;   /* Reading prose. */
+
+  /* ----------------------------------------------------------
+     TYPOGRAPHY · Letter-spacing
+     ---------------------------------------------------------- */
+  --tracking-display: -0.025em;  /* Satoshi at large scale. */
+  --tracking-tight:   -0.015em;  /* Card headings. */
+  --tracking-normal:   0em;      /* Body default. */
+  --tracking-caps:     0.025em;  /* Libre Franklin ALL CAPS titles. */
+  --tracking-mono:     0.18em;   /* Geist Mono uppercase — always. */
+
+  /* ----------------------------------------------------------
+     SPACING · Web UI scale
+     8px base grid.
+     ---------------------------------------------------------- */
+  --space-2xs:    4px;
+  --space-xs:     8px;
+  --space-sm:    12px;
+  --space-md:    16px;
+  --space-lg:    24px;
+  --space-xl:    32px;
+  --space-2xl:   48px;
+  --space-3xl:   64px;
+  --space-4xl:   80px;
+  --space-5xl:  100px;
+
+  /* ----------------------------------------------------------
+     BORDERS
+     ---------------------------------------------------------- */
+  --border-hair:        1px solid var(--hair);
+  --border-hair-strong: 1px solid var(--hair-strong);
+  --border-ink:         2px solid var(--ink);
+  --border-red:         4px solid var(--torch-red);
+  --border-red-accent:  3px solid var(--torch-red);
+  --border-red-thin:    1px solid var(--torch-red);
+
+  /* ----------------------------------------------------------
+     RADIUS
+     The Wallboard system is square-cornered. Do not soften.
+     ---------------------------------------------------------- */
+  --radius: 0;
+
+  /* ----------------------------------------------------------
+     SHADOW
+     No decorative shadows. Depth = paper-2 + 1px border.
+     Focus ring only exception.
+     ---------------------------------------------------------- */
+  --shadow-none:   none;
+  --shadow-focus:  0 0 0 2px var(--torch-red);
+
+  /* ----------------------------------------------------------
+     GRADIENTS
+     Only one allowed gradient — Wallboard column table cells.
+     ---------------------------------------------------------- */
+  --gradient-wb-cell: linear-gradient(to right, rgba(209, 32, 44, 0.06), rgba(209, 32, 44, 0.02));
+
+  /* ----------------------------------------------------------
+     MOTION
+     ---------------------------------------------------------- */
+  --duration-fast:   120ms;
+  --duration-base:   180ms;
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* ----------------------------------------------------------
+     Z-INDEX
+     ---------------------------------------------------------- */
+  --z-base:    0;
+  --z-raised:  10;
+  --z-overlay: 100;
+  --z-modal:   1000;
+  --z-toast:   2000;
+}
+
+/* ============================================================
+   Body defaults — apply at document root.
+   ============================================================ */
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--type-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headlines use Satoshi */
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-black);
+  letter-spacing: var(--tracking-display);
+  color: var(--color-text);
+  line-height: var(--leading-tight);
+}
+
+/* Section titles use Libre Franklin ALL CAPS */
+h3, h4, .eyebrow, .section-title {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+  color: var(--color-text);
+}
+
+/* Mono labels */
+.label, .caption, .meta {
+  font-family: var(--font-mono);
+  font-size: var(--type-eyebrow);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+/* Red accent on italic in display headings */
+h1 em, h2 em, .display em {
+  color: var(--torch-red);
+  font-style: italic;
+}
